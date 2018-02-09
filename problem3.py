@@ -3,21 +3,15 @@ The prime factors of 13195 are 5, 7, 13 and 29.
 
 What is the largest prime factor of the number 600851475143 ?
 """
-from random import choice
-n = 13195
-# первый возможный делитель. Т.к. надо найти наибольший то идём вниз
-# round округляет до чётного. нам нужны не чётные.
-delimiter = round(n / 2) + 3
-while delimiter > 1:
-    delimiter -= 2
-    # проверяем делится ли без остатка
-    if (n / delimiter) % 1 == 0.0:
-        continue
-    print ("Delimiter found: {}, Ferma checking".format(delimiter))
-    # малая теорема Ферма:
-    a = choice(range(2, delimiter))
-    if (a ^ delimiter) % delimiter == a % delimiter:
-        print ("Ferma: {}".format(delimiter) )
-    
-print (delimiter)
 
+i = 1
+number = 600851475143
+while i != number:
+  i += 1
+  if i == number:
+    print('Result is {:.0f}'.format(number))
+    break
+  if not number % i:
+    number = number / i
+    print('Divider is {}, and result of divide is {:.0f}'.format(i, number))
+    i = 1
