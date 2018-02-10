@@ -64,30 +64,24 @@ for i in string.split():
         matrix.append(temp_list)
         temp_list=[]
 
-# вертикальный поиск
-for r in range(20):
-    for l in range(17):
-        prod_temp = int(matrix[l][r]) * int(matrix[l+1][r]) * int(matrix[l+2][r]) * int(matrix[l+3][r])
-        maximum_value = prod_temp if (maximum_value < prod_temp) else maximum_value
+#возвращаем элемент матрицы. если такого нет - возрващаем 0
+def glv(matrix, line, row):
+    try:
+        return int(matrix[line][row])
+    except:
+        return 0
 
-# горизонтальный поиск
+#  поиск
 for l in range(20):
-    for r in range(17):
-        prod_temp = int(matrix[l][r+1]) * int(matrix[l][r+2]) * int(matrix[l][r+3]) * int(matrix[l][r])
+    for r in range(20):
+        vert_temp = glv(matrix,l,r+1) * glv(matrix,l,r+2) * glv(matrix,l,r+3) * glv(matrix,l,r) # вертикальный
+        gor_temp = glv(matrix,l,r) * glv(matrix,l+1,r) * glv(matrix,l+2,r) * glv(matrix,l+3,r)  # горизонтальный
+        fow_temp = glv(matrix,l,r) * glv(matrix,l+1,r+1) * glv(matrix,l+2,r+2) * glv(matrix,l+3,r+3)    # \
+        back_temp = glv(matrix,l,r+3) * glv(matrix,l+1,r+2) * glv(matrix,l+2,r+1) * glv(matrix,l+3,r)   # /
+        # находим наибольшее произведение из 4.
+        prod_temp = max(vert_temp, gor_temp, fow_temp, back_temp)
+        # обновляем максимальное прозведение
         maximum_value = prod_temp if (maximum_value < prod_temp) else maximum_value
-
-# диагональ \. обходим горизонтально.
-for l in range(17):
-    for r in range(17):
-        prod_temp = int(matrix[l][r]) * int(matrix[l+1][r+1]) * int(matrix[l+2][r+2]) * int(matrix[l+3][r+3])
-        maximum_value = prod_temp if (maximum_value < prod_temp) else maximum_value
-
-# диагональ /. обходим горизонтально.
-for l in range(17):
-    for r in range(17):
-        prod_temp = int(matrix[l][r+3]) * int(matrix[l+1][r+2]) * int(matrix[l+2][r+1]) * int(matrix[l+3][r])
-        maximum_value = prod_temp if (maximum_value < prod_temp) else maximum_value
-
 
 print (maximum_value)
 
