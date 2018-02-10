@@ -16,7 +16,7 @@ while not found  or (a + b + c <= 1000):
         c = summ - (b + a)
         if c ** 2 == a ** 2 + b ** 2:
             found = True
-            print(a,b,c)
+            print(a*b*c)
             break
     a += 1
     b = a + 1
