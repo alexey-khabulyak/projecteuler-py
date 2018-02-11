@@ -3,7 +3,7 @@ Starting in the top left corner of a 2×2 grid, and only being able to move to t
 How many such routes are there through a 20×20 grid?
 """
 import math
-# можно решить через сочения. привет тервер
+# можно решить через сочетания. привет тервер
 # n!/(n − m)!/m! где m - размер сетки. n - число в 2 раза больше. 
 # тоесть формула сводится до (2*m)!/((m!) ** 2). где м - размер сетки
 grid = 20
