@@ -39,7 +39,7 @@ def letter_word(number):
                 ranks[i-1]
                 )
         i -= 1
-    if len(word) > 0:
+    if len(word) > 0 and (dec+last) > 0:
         word += "and "
     
     if dec >= 2:
